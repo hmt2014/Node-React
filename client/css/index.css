@@ -1,0 +1,15 @@
+body, p, ul, li, span, div{
+    padding: 0;
+    margin: 0;
+}
+#tool-bar{
+    background-color: cadetblue;
+    color: white;
+}
+.wrapper input{
+    display: inline-block;
+}
+.wrapper label{
+    width: 60px;
+    display: inline-block;
+}
