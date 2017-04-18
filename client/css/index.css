@@ -6,10 +6,17 @@ body, p, ul, li, span, div{
     background-color: cadetblue;
     color: white;
 }
+.wrapper{
+    margin: 10px 0px;
+}
 .wrapper input{
     display: inline-block;
 }
 .wrapper label{
     width: 60px;
     display: inline-block;
+}
+.login-inner{
+    width: 250px;
+    height: 300px;
 }
