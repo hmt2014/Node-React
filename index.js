@@ -2,6 +2,7 @@ var express = require('express');
 var path = require('path');
 var ejs = require('ejs');
 var user = require('./routes/user');
+var file = require('./routes/file');
 var bodyParser = require('body-parser');
 
 var favicon = require('static-favicon');
@@ -42,13 +43,14 @@ app.get('/', function (req, res) {
     res.render('main/index');
 });
 
-app.get('/data/:module', function(req, res, next){
+app.get('/file/:module', function(req, res, next){
     var c_path = req.params.module;
-    var Action = require('./server/action/data/' + c_path);
+    var Action = require('./server/action/file/' + c_path);
     Action.execute(req,res);
 });
 //引入其他路径
 user(app);
+file(app);
 
 // 设置views路径和模板
 app.set('views', './client/view');

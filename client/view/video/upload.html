@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= title%></title>
+</head>
+<body>
+<form action="/upload" method="post" enctype="multipart/form-data">
+    <div class="wrapper">
+        <label>Title</label>
+        <input name="file[title]" type="text"/>
+    </div>
+    <div class="wrapper">
+        <label>Description</label>
+        <textarea name="file[des]">
+        </textarea>
+    </div>
+    <div class="wrapper">
+        <input name="vdofile" type="file"/>
+    </div>
+    <input type="submit" value="Submit"/>
+</form>
+</body>
+</html>

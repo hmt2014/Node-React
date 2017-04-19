@@ -3,11 +3,171 @@
 <head>
     <meta charset="utf-8"/>
     <title><%= title%></title>
-    <link rel="stylesheet" href="../../../client/css/index.css" type="text/css"/>
+    <link rel="stylesheet" href="/client/css/index.css" type="text/css"/>
+    <script src="/client/js/jquery-3.1.1.min.js"></script>
+    <style>
+        /*全局样式*/
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        body {
+            line-height: 1;
+            background: #FFF;
+        }
+        body {
+            font-family: "Microsoft Yahei";
+            background: #f4f4f4;
+            min-width: 1000px;
+            height: 100%;
+        }
+        /*主体居中*/
+        .container {
+            width: 98%;
+            position: relative;
+            margin-bottom: 20px;
+            margin: 0 auto;
+        }
+        #photo-box .photo {
+            display: inline-block;
+            /*float: left;*/
+            width: 225px;
+            background-color: #fff;
+            overflow: hidden;
+            -webkit-transition: .3s ease-in-out;
+            -o-transition: .3s ease-in-out;
+            transition: .3s ease-in-out;
+            border: 1px solid #e2e2e2;
+            background-image: url('/client/img/test.jpg');
+        }
+
+        #photo-box .photo .content {
+            margin: 0 10px  ;
+            font-size: 14px;
+            color: #777;
+            line-height: 20px;
+            word-break: break-all;
+        }
+
+        /*显示加载*/
+        #load-over{
+            width: 95%;
+            margin: 0 auto;
+            border-bottom: 1px #ccc solid;
+            border-top: 1px #ccc solid;
+            padding: 20px 0px;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #999;
+        }
+    </style>
 
 </head>
 <body>
-<h1>Welcome <%= user.username %>, 欢迎登录！！</h1>
-<a class="btn" href="/logout">退出</a>
+<h1>Welcome <%= user.username %>, welcome！！</h1>
+<a class="btn" href="/logout">Logout</a>
+<a class="btn" href="/upload">Upload Video</a>
+
+<!--"photo-box"为瀑布流 图片容器-->
+<div id="photo-box" class="container">
+    <!--"photo"显示视频缩略图与图片信息-->
+    <a class="photo" target="_blank" href="#">
+        [站外图片上传中……(2)]
+        <div class="content">
+            欢迎来到XXX(公告或广告位)
+        </div>
+    </a>
+
+
+    <a class="photo" target="_blank" href="#">
+        [站外图片上传中……(3)]
+        <div class="content">
+            欢迎来到XXX(公告或广告位)
+        </div>
+    </a>
+    <a class="photo" target="_blank" href="#">
+        [站外图片上传中……(4)]
+        <div class="content">
+            欢迎来到XXX(公告或广告位)
+        </div>
+    </a>
+    <a class="photo" target="_blank" href="#">
+        [站外图片上传中……(5)]
+        <div class="content">
+            欢迎来到XXX(公告或广告位)
+        </div>
+    </a>
+    <a class="photo" target="_blank" href="#">
+        [站外图片上传中……(6)]
+        <div class="content">
+            欢迎来到XXX(公告或广告位)
+        </div>
+    </a>
+    <a class="photo" target="_blank" href="#">
+        [站外图片上传中……(7)]
+        <div class="content">
+            欢迎来到XXX(公告或广告位)
+        </div>
+    </a>
+    <a class="photo" target="_blank" href="#">
+        [站外图片上传中……(8)]
+        <div class="content">
+            欢迎来到XXX(公告或广告位)
+        </div>
+    </a>
+    <a class="photo" target="_blank" href="#">
+        [站外图片上传中……(9)]
+        <div class="content">
+            欢迎来到XXX(公告或广告位)
+        </div>
+    </a>
+    <a class="photo" target="_blank" href="#">
+        [站外图片上传中……(10)]
+        <div class="content">
+            欢迎来到XXX(公告或广告位)
+        </div>
+    </a>
+    <a class="photo" target="_blank" href="#">
+        [站外图片上传中……(11)]
+        <div class="content">
+            欢迎来到XXX(公告或广告位)
+        </div>
+    </a>
+    <a class="photo" target="_blank" href="#">
+        [站外图片上传中……(12)]
+        <div class="content">
+            欢迎来到XXX(公告或广告位)
+        </div>
+    </a>
+    <a class="photo" target="_blank" href="#">
+        [站外图片上传中……(13)]
+        <div class="content">
+            欢迎来到XXX(公告或广告位)
+        </div>
+    </a>
+
+</div>
+
+<div id="load-over" style="">
+    加载中...
+</div>
+<script>
+  /*  alert('1');
+    Minigrid('#photo-box', '.photo', 20, null,
+        function() {
+        alert('2');
+            //更新后回调
+        });//瀑布流插件初始化
+    window.addEventListener('resize', function() {//窗口大小改变自动排版
+        minigrid('#photo-box', '.photo');
+    });*/
+
+</script>
+
 </body>
 </html>

@@ -10,4 +10,11 @@ var UserSchema = new Schema({
     password: String
 });
 
+var FileSchema = new Schema({
+    username: String,
+    title: String,
+    des: String
+})
+
 exports.User = db.model('User', UserSchema);
+exports.File = db.model('File', FileSchema);
