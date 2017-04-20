@@ -46,4 +46,8 @@ module.exports = function(app){
         });
         console.log("111");*/
     });
+
+    app.get('/playvdo', function (req, res) {
+        res.render('video/video', {title: 'Play Video'});
+    })
 }
