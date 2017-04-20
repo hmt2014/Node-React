@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Play Video</title>
+    <script src="/client/js/swfobject.js" type="text/javascript"></script>
+
+</head>
+<body>
+
+<div id="flashcontent"></div>
+<div style="width:700px;height:400px">
+    <object width="160" height="144"
+            classid="clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B"
+            codebase="/client/file" codetype="video/mp4">
+        <param name="src" value="/client/file/AOA_0.mp4">
+        <param name="autoplay" value="true">
+        <param name="controller" value="true">
+        <embed src="/client/file/AOA_0.mp4" width="160" height="144"
+               autoplay="true" controller="false" type="video/mp4"
+               pluginspage="http://fuguojian.cn/blog2/">
+        </embed>
+    </object>
+
+</div>
+<script type="text/javascript">
+    var so = new SWFObject("/client/file/AOA_0.mp4", "mymovie", "400", "100%", "8", "#336699");
+    so.addParam("quality", "low");
+    so.write("flashcontent");
+</script>
+</body>
+</html>
