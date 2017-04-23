@@ -3,30 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <title>Play Video</title>
+    <script src="/client/js/jquery-3.1.1.min.js" type="text/javascript"></script>
     <script src="/client/js/swfobject.js" type="text/javascript"></script>
 
 </head>
 <body>
-
+<embed align="middle" src="http://player.youku.com/player.php/sid/XMTMxODU3MzA4NA==/v.swf" width="480" height="400" type="application/x-shockwave-flash" wmode="opaque" loop="-1" allowfullscreen="true" allowscriptaccess="true" quality="high"></embed>
 <div id="flashcontent"></div>
 <div style="width:700px;height:400px">
-    <object width="160" height="144"
+    <object width="700" height="400" id="videoPlayer"
             classid="clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B"
             codebase="/client/file" codetype="video/mp4">
         <param name="src" value="/client/file/AOA_0.mp4">
-        <param name="autoplay" value="true">
-        <param name="controller" value="true">
-        <embed src="/client/file/AOA_0.mp4" width="160" height="144"
-               autoplay="true" controller="false" type="video/mp4"
-               pluginspage="http://fuguojian.cn/blog2/">
+
+        <!--当前播放信息,显示是否正在播放,及总播放时间和当前播放到的时间
+        <param name="ShowStatusBar" value="-1">
+        <param name="ShowTracker" value="-1">
+        <param name="ShowControls" value="1">
+        <param name="ShowPositionControls" value="0">
+        <param name="ShowAudioControls" value="1">
+        <param name="ShowTracker" value="1">
+        <param name="ShowDisplay" value="0">
+        <param name="ShowStatusBar" value="0">
+        <param name="ShowGotoBar" value="0">
+        <param name="ShowCaptioning" value="0">
+        <param name="AutoStart" value="0">
+        <param name="Volume" value="-2500">
+        <param name="AnimationAtStart" value="0">
+        <param name="TransparentAtStart" value="0">
+        <param name="AllowChangeDisplaySize" value="0">
+        <param name="AllowScan" value="0">
+        <param name="EnableContextMenu" value="0">
+        <param name="ClickToPlay" value="0">-->
+        <param name="controls" value="console">
+
+
+        <embed name="videoPlayer" src="/client/file/AOA_0.mp4"
+
+               width="700"
+               height="400"
+               autostart="false"
+               paused="true"
+               controls="console"
+               type="video/mp4"
+               swliveconnect="true"
+               pluginspage="http://fuguojian.cn/blog2/"
+               mastersound>
         </embed>
     </object>
+    <input id="pause" type="button" value="Pause"/>
 
 </div>
 <script type="text/javascript">
-    var so = new SWFObject("/client/file/AOA_0.mp4", "mymovie", "400", "100%", "8", "#336699");
+    var so = new SWFObject("/client/file/Wildlife.swf", "mymovie", "400", "100%", "8", "#336699");
     so.addParam("quality", "low");
     so.write("flashcontent");
+    $(document).ready(function(){
+        function getFlashMovieObject(movieName)
+        {
+            if (window.document[movieName])
+            {
+                return window.document[movieName];
+            }
+            if (navigator.appName.indexOf("Microsoft Internet")==-1)
+            {
+                if (document.embeds && document.embeds[movieName])
+                    return document.embeds[movieName];
+            }   else // if (navigator.appName.indexOf("Microsoft Internet")!=-1)
+            {
+                return document.getElementById(movieName);
+            }
+        }
+        //控制
+        $("#pause").bind("click", function(){
+            var flashMovie = getFlashMovieObject("videoPlayer");
+            //alert(flashMovie);
+            //alert(flashMovie.Stop);
+            //alert(flashMovie.StopPlay);
+            console.log(flashMovie.CurrentState);
+            //flashMovie.stop();
+           // document.embeds('ttt').stop();
+        });
+    })
 </script>
 </body>
 </html>
