@@ -5,7 +5,13 @@
     <title>Play Video</title>
     <script src="/client/js/jquery-3.1.1.min.js" type="text/javascript"></script>
     <script src="/client/js/swfobject.js" type="text/javascript"></script>
-
+    <link rel="stylesheet" type="text/css" href="/client/css/commentcorelib/style.css" />
+    <script type="text/javascript" src="/client/js/CommentCoreLibrary.js"></script>
+    <style type="text/css">
+        #messages { list-style-type: none; margin: 0; padding: 0; }
+        #messages li { padding: 5px 10px; }
+        #messages li:nth-child(odd) { background: #eee; }
+    </style>
 </head>
 <body>
 <embed align="middle" src="http://player.youku.com/player.php/sid/XMTMxODU3MzA4NA==/v.swf" width="480" height="400" type="application/x-shockwave-flash" wmode="opaque" loop="-1" allowfullscreen="true" allowscriptaccess="true" quality="high"></embed>
@@ -52,6 +58,10 @@
         </embed>
     </object>
     <input id="pause" type="button" value="Pause"/>
+    <div id="my-comment-stage">
+        <div class="container"></div>
+    </div>
+    <ul id="messages"></ul>
 
 </div>
 <script type="text/javascript">
@@ -76,15 +86,22 @@
         }
         //控制
         $("#pause").bind("click", function(){
-            var flashMovie = getFlashMovieObject("videoPlayer");
-            //alert(flashMovie);
-            //alert(flashMovie.Stop);
-            //alert(flashMovie.StopPlay);
-            console.log(flashMovie.CurrentState);
-            //flashMovie.stop();
-           // document.embeds('ttt').stop();
+            //var flashMovie = getFlashMovieObject("videoPlayer");
+            //console.log(flashMovie.CurrentState);
         });
-    })
+    });
+
+    //弹幕
+    window.addEventListener("load", function(){
+        var CM = new CommentManager($("#my-comment-stage"));
+        CM.init();
+        CM.start();
+
+        window.CM = CM;
+    });
+
+
+
 </script>
 </body>
 </html>
