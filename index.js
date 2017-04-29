@@ -10,6 +10,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+
+
 //数据库
 //采用connect-mongodb中间件作为Session存储
 var session = require('express-session');
@@ -94,3 +96,17 @@ var server = app.listen(8888, function(){
     var port = server.address().port;
     console.log('Listening at http://%s:%s', host, port);
 });
+
+//create socket.io
+var io = require('socket.io')(server);
+//wait for socket event
+io.on('connection', function(socket){
+    console.log('a user connected');
+    socket.on('disconnect', function(){
+        console.log('user disconnected');
+    });
+    socket.on('message send', function(msg){
+        console.log('message:' + msg);
+        io.emit('message show', msg);
+    })
+})
