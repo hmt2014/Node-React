@@ -52,8 +52,8 @@
     <div id="content-left">
         <div id="messageList"></div>
         <div id="messageSend">
-            <input type="text"/>
-            <input type="button" value="Send" id="#btnSend"/>
+            <input type="text" id="msg"/>
+            <input type="button" value="Send" id="btnSend"/>
         </div>
     </div>
 </div>
@@ -97,7 +97,7 @@
             window.CM = CM;
 
             var socket = io();
-            socket.on('message send', function(msg){
+            socket.on('message show', function(msg){
                 console.log(msg);
                 $('#messages').append($('<li>').text(msg));
                 var danmu = JSON.parse(msg);
@@ -109,16 +109,23 @@
         var socket = io();
         $("#btnSend").click(function(e){
             e.preventDefault();
-            var danMu = {
+           /* var danMu = {
                 "mode": Number($("#mode").attr("danmu-mode")),
                 "text": $("#msg").val(),
                 "stime": 0,
                 "size": Number($("#size").attr("danmu-size")),
                 "color": parseInt($("#color").attr("danmu-color"), 16),
                 "dur": 10000
+            };*/
+            var danMu = {
+                "mode": 1,
+                "text": "hello world",
+                "stime": 0,
+                "size": 25,
+                "color": 0xff00ff,
+                "dur": 10000
             };
             var msg = JSON.stringify(danMu);
-            console.log(msg);
             socket.emit('message send', msg);
             $('#msg').val("");
         })
