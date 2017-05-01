@@ -30,44 +30,5 @@
         </form>
     </div>
 </div>
-<div id="example"></div>
-
-<!--
-<script src="https://npmcdn.com/react@15.3.1/dist/react.js"></script>
-<script src="https://npmcdn.com/react-dom@15.3.1/dist/react-dom.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
-<script type="text/babel">
-    ///子组件
-    var HelloMessage = React.createClass({
-        childMethod: function(){
-            alert("组件之间通信成功");
-        },
-        render: function() {
-            return <div> <h1>Hello {this.props.name}</h1>  <button onClick={this.childMethod}>子组件</button></div>
-        }
-    });
-
-    //父组件
-    var ImDaddyComponent = React.createClass({
-        getDS: function(){
-            //调用组件进行通信
-            this.refs.getSwordButton.childMethod();
-        },
-        render: function(){
-            return (
-                    <div>
-                        <HelloMessage name="John" ref="getSwordButton" />
-                        <button onClick={this.getDS}>父组件</button>
-                    </div>
-            );
-        }
-    });
-
-    ReactDOM.render(
-            <ImDaddyComponent  />,
-        document.getElementById('correspond')
-    );
-
-</script>-->
 </body>
 </html>

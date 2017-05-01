@@ -45,15 +45,15 @@
     <div id="content-right">
         <div id="my-player" class="abp" style="height: 600px; background-color:#000">
             <div id="my-comment-stage" class="container">
-                <object width="700" height="400" id="videoPlayer"
+                <object width="800" height="600" id="videoPlayer"
                         classid="clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B"
                         codebase="/client/file" codetype="video/mp4">
                     <param name="src" value="/client/file/AOA_0.mp4">
                     <param name="controls" value="console">
                     <embed name="videoPlayer" src="/client/file/AOA_0.mp4"
 
-                           width="700"
-                           height="400"
+                           width="800"
+                           height="600"
                            autostart="false"
                            paused="true"
                            controls="console"
@@ -65,9 +65,13 @@
                 </object>
             </div>
         </div>
-        <ul id="messages"></ul>
     </div>
     <div id="content-left">
+        <div id="msgBox">
+            <ul id="messages">
+
+            </ul>
+        </div>
         <div id="mesConfig">
             <div class="listOuter">
                 <select id="sizes" danmu-size="">
@@ -191,9 +195,8 @@
 
             var socket = io();
             socket.on('message show', function(msg){
-                console.log(msg);
-                $('#messages').append($('<li>').text(msg));
                 var danmu = JSON.parse(msg);
+                $('#messages').append($('<li>').text( ":" + danmu["text"]));
                 CM.send(danmu);
             });
 

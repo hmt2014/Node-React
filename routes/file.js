@@ -53,6 +53,6 @@ module.exports = function(app){
 
     app.get('/videoConfig', function(req, res){
         var config = JSON.parse(fs.readFileSync(__dirname+ "./../public/jsons/config.json"));
-        res.send({sizes: config.sizes, colors: config.colors, modes: config.modes, inits: config.inits});
+        res.send({sizes: config.sizes, colors: config.colors, modes: config.modes, inits: config.inits, user: req.session.user});
     })
 }
