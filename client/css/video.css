@@ -16,3 +16,7 @@ body, p, ul, li, span, div{
     float: right;
     margin-left: -100%;
 }
+.listOuter{
+    width: 60px;
+    float: left;
+}
