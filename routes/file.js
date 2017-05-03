@@ -48,11 +48,11 @@ module.exports = function(app){
     });
 
     app.get('/playvdo', function (req, res) {
-        res.render('video/video', {title: 'Play Video'});
+        res.render('video/video', {title: 'Play Video', user: req.session.user});
     });
 
     app.get('/videoConfig', function(req, res){
         var config = JSON.parse(fs.readFileSync(__dirname+ "./../public/jsons/config.json"));
         res.send({sizes: config.sizes, colors: config.colors, modes: config.modes, inits: config.inits, user: req.session.user});
-    })
+    });
 }

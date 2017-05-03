@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Play Video</title>
+    <link rel="stylesheet" type="text/css" href="/client/css/index.css"/>
     <link rel="stylesheet" type="text/css" href="/client/css/video.css"/>
     <script src="/client/js/jquery-3.1.1.min.js" type="text/javascript"></script>
     <script src="/client/js/swfobject.js" type="text/javascript"></script>
@@ -16,6 +17,17 @@
     </style>
 </head>
 <body>
+<div id="tool-bar">
+    <ul>
+        <li>首页</li>
+        <li>查看</li>
+        <li>搜索</li>
+        <li class="right"><a href="/logout">退出</a></li>
+        <li class="right"><%= user.username%></li>
+        <li class="right"><a href="/upload">上传视频</a></li>
+
+    </ul>
+</div>
 <!--
 <embed align="middle" src="http://player.youku.com/player.php/sid/XMTMxODU3MzA4NA==/v.swf" width="480" height="400" type="application/x-shockwave-flash" wmode="opaque" loop="-1" allowfullscreen="true" allowscriptaccess="true" quality="high"></embed>
 <div id="flashcontent"></div>
