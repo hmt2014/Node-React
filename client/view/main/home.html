@@ -5,68 +5,7 @@
     <title><%= title%></title>
     <link rel="stylesheet" href="/client/css/index.css" type="text/css"/>
     <script src="/client/js/jquery-3.1.1.min.js"></script>
-    <style>
-        /*全局样式*/
-        * {
-            margin: 0;
-            padding: 0;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        body {
-            line-height: 1;
-            background: #FFF;
-        }
-        body {
-            font-family: "Microsoft Yahei";
-            background: #f4f4f4;
-            min-width: 1000px;
-            height: 100%;
-        }
-        /*主体居中*/
-        .container {
-            width: 98%;
-            position: relative;
-            margin-bottom: 20px;
-            margin: 0 auto;
-        }
-        #photo-box .photo {
-            display: inline-block;
-            /*float: left;*/
-            width: 225px;
-            background-color: #fff;
-            overflow: hidden;
-            -webkit-transition: .3s ease-in-out;
-            -o-transition: .3s ease-in-out;
-            transition: .3s ease-in-out;
-            border: 1px solid #e2e2e2;
-            background-image: url('/client/img/test.jpg');
-        }
-
-        #photo-box .photo .content {
-            margin: 0 10px  ;
-            font-size: 14px;
-            color: #777;
-            line-height: 20px;
-            word-break: break-all;
-        }
-
-        /*显示加载*/
-        #load-over{
-            width: 95%;
-            margin: 0 auto;
-            border-bottom: 1px #ccc solid;
-            border-top: 1px #ccc solid;
-            padding: 20px 0px;
-            text-align: center;
-            margin-bottom: 30px;
-            color: #999;
-        }
-    </style>
-
+    <link rel="stylesheet" href="/client/css/home.css" type="text/css"/>
 </head>
 <body>
 <div id="tool-bar">
@@ -74,24 +13,25 @@
         <li>首页</li>
         <li>查看</li>
         <li>搜索</li>
+        <li class="right"><a href="/logout">退出</a></li>
         <li class="right"><%= user.username%></li>
         <li class="right"><a href="/upload">上传视频</a></li>
-        <li class="right"><a href="/logout">退出</a></li>
+
     </ul>
 </div>
-<!--"photo-box"为瀑布流 图片容器-->
 <div id="photo-box" class="container">
-    <!--"photo"显示视频缩略图与图片信息-->
-    <a class="photo" target="_blank" href="/playvdo">
-        [站外图片上传中……(2)]
-        <div class="content">
-            欢迎来到XXX(公告或广告位)
+    <div class="typeVideo">
+        <div class="titleVideo">音乐MV</div>
+        <div class="boxVideo">
+            <a class="photo" target="_blank" href="/playvdo">
+                <div class="content">
+                </div>
+                <div class="content-mask">
+                    <div class="content-play"></div>
+                </div>
+            </a>
         </div>
-    </a>
-</div>
-
-<div id="load-over" style="">
-    加载中...
+    </div>
 </div>
 <script>
   /*  alert('1');
