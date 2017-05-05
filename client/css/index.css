@@ -56,7 +56,14 @@ body {
     color:#6a6f77;
     padding-left: 4px;
 }
-.wrapper input:focus{
+.wrapper textarea{
+    ontline: 0;
+    border-radius:4px;
+    border:1px solid #c8cccf;
+    color:#6a6f77;
+    padding-left: 4px;
+}
+.wrapper input:focus, .wrapper textarea:focus{
     -webkit-box-shadow:0 0 10px rgba(95, 158, 160, .5);
     -moz-box-shadow:0 0 10px rgba(95, 158, 160, .5);
     box-shadow:0 0 10px rgba(95, 158, 160, .5);
@@ -67,31 +74,37 @@ body {
     color: cadetblue;
     font-weight: bold;
 }
+.wrapper .label-upload{
+    width: 100px;
+    display: inline-block;
+    color: cadetblue;
+    font-weight: bold;
+}
 .login-inner{
     height: 250px;
 }
-#main-content{
+.main-content{
     width: 1000px;
     margin: 0 auto;
     overflow: hidden;
     margin-top: 50px;
 }
-#left-content{
+.left-content{
     width: 565px;
     margin-left: 10px;
     float: left;
 }
-#right-content{
+.right-content{
     width:  320px;
     float: right;
     padding: 50px 20px;
 }
-#right-inner.box-shade{
+.right-inner.box-shade{
     -webkit-box-shadow:0 0 10px rgba(192, 192, 192, .5);
     -moz-box-shadow:0 0 10px rgba(192, 192, 192, .5);
     box-shadow:0 0 10px rgba(192, 192, 192, .5);
 }
-#left-content #left-inner img{
+.left-content #left-inner img{
     height: 500px;
     width: 500px;
 }

@@ -2,23 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="/client/css/index.css" type="text/css"/>
     <title><%= title%></title>
 </head>
 <body>
-<form action="/upload" method="post" enctype="multipart/form-data">
-    <div class="wrapper">
-        <label>Title</label>
-        <input name="file[title]" type="text"/>
-    </div>
-    <div class="wrapper">
-        <label>Description</label>
-        <textarea name="file[des]">
-        </textarea>
-    </div>
-    <div class="wrapper">
-        <input name="vdofile" type="file"/>
-    </div>
-    <input type="submit" value="Submit"/>
-</form>
+<div id="tool-bar">
+    <ul>
+        <li>首页</li>
+        <li>查看</li>
+        <li>搜索</li>
+        <li class="right"><a href="/logout">退出</a></li>
+        <li class="right"><%= user.username%></li>
+        <li class="right"><a href="/upload">上传视频</a></li>
+
+    </ul>
+</div>
+<div class="main-content">
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <div class="wrapper">
+            <label class="label-upload">Title</label>
+            <input name="file[title]" type="text"/>
+        </div>
+        <div class="wrapper">
+            <label class="label-upload">Description</label>
+            <textarea name="file[des]">
+            </textarea>
+        </div>
+        <div class="wrapper">
+            <input name="vdofile" type="file"/>
+        </div>
+        <a class="btn upload" id="btn-upload">Upload</a>
+    </form>
+</div>
 </body>
 </html>

@@ -9,7 +9,7 @@ var multipartMiddleware = multipart();
 
 module.exports = function(app){
     app.get('/upload',  function(req, res){
-        res.render('video/upload', {title: 'Upload Video'})
+        res.render('video/upload', {title: 'Upload Video', user:req.session.user})
     });
     app.post('/upload', multipartMiddleware, function(req, res){
         var username = req.session.username;
