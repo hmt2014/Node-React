@@ -8,7 +8,7 @@
 <body>
 <div id="tool-bar">
     <ul>
-        <li>首页</li>
+        <li><a href="/home">首页</a></li>
         <li>查看</li>
         <li>搜索</li>
         <li class="right"><a href="/logout">退出</a></li>
@@ -18,6 +18,7 @@
     </ul>
 </div>
 <div class="main-content">
+    <div class="upload-title">请上传MP4格式的视频</div>
     <form action="/upload" method="post" enctype="multipart/form-data">
         <div class="wrapper">
             <label class="label-upload">Title</label>
@@ -28,11 +29,18 @@
             <textarea name="file[des]">
             </textarea>
         </div>
-        <div class="wrapper">
-            <input name="vdofile" type="file"/>
+        <div >
+            <div class=" input-upload">
+                <input class="btn" name="vdofile" type="file"/>点击这里上传文件
+            </div>
+            <span class="fileerrorTip"></span>
+            <span class="showFileName"></span>
         </div>
+
         <a class="btn upload" id="btn-upload">Upload</a>
     </form>
 </div>
+<script type="text/javascript" src="/client/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="/client/js/main/upload.js"></script>
 </body>
 </html>
