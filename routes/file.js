@@ -33,18 +33,6 @@ module.exports = function(app){
                 res.end( JSON.stringify( response ) );
             });
         });
-
-        /*
-        file.save(function(err, file){
-            if(!err){
-                console.log("upload successfully！");
-                objId = file._id;
-                console.log(objId);
-            }else{
-                console.err(err);
-            }
-        });
-        console.log("111");*/
     });
 
     app.get('/playvdo', function (req, res) {

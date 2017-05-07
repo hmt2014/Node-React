@@ -13,4 +13,8 @@ $(".input-upload").on("change", "input[type='file']", function(){
         $(".fileerrorTip").html("您未上传文件，或者您上传文件类型有误！").show();
         return false;
     }
-})
+});
+
+$("#btn-upload").bind("click",function(){
+    $("#upload-form").submit();
+});

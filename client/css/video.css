@@ -3,16 +3,18 @@ body, p, ul, li, span, div{
     margin: 0;
 }
 #main-content{
-    width: 1000px;
+    width: 1195px;
     margin: 0 auto;
+    overflow: hidden;
+    margin-top: 15px;
 }
 #content-right{
-    width: 800px;
+    width: 880px;
     margin-right: 10px;
     float: left;
 }
 #content-left{
-    width: 200px;
+    width: 298px;
     float: right;
     margin-left: -100%;
 }
@@ -23,7 +25,7 @@ body, p, ul, li, span, div{
 /*message box*/
 #msgBox{
     height: 400px;
-    width: 200px;
+    width: 298px;
     background-color: gainsboro;
     padding: 5px;
     overflow: scroll;
@@ -32,4 +34,8 @@ body, p, ul, li, span, div{
     font-size: 10px;
     background-color: gainsboro;
     color: #999999;
+}
+/*control bar*/
+#controls-bar{
+    color: #000;
 }

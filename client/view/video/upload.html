@@ -19,17 +19,16 @@
 </div>
 <div class="main-content">
     <div class="upload-title">请上传MP4格式的视频</div>
-    <form action="/upload" method="post" enctype="multipart/form-data">
+    <form action="/upload" method="post" id="upload-form" enctype="multipart/form-data">
         <div class="wrapper">
             <label class="label-upload">Title</label>
             <input name="file[title]" type="text"/>
         </div>
         <div class="wrapper">
             <label class="label-upload">Description</label>
-            <textarea name="file[des]">
-            </textarea>
+            <textarea name="file[des]"></textarea>
         </div>
-        <div >
+        <div class="upload-div" >
             <div class=" input-upload">
                 <input class="btn" name="vdofile" type="file"/>点击这里上传文件
             </div>
@@ -40,7 +39,7 @@
         <a class="btn upload" id="btn-upload">Upload</a>
     </form>
 </div>
-<script type="text/javascript" src="/client/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="/client/js/jquery-1.7.min.js"></script>
 <script type="text/javascript" src="/client/js/main/upload.js"></script>
 </body>
 </html>

@@ -12,7 +12,7 @@ a:hover, a:visited{
 }
 body {
     font-family: "Microsoft Yahei";
-    min-width: 1000px;
+    min-width: 1195px;
     height: 100%;
 }
 #tool-bar{
@@ -21,7 +21,7 @@ body {
     height: 50px;
 }
 #tool-bar ul{
-    width: 1000px;
+    width: 1195px;
     margin: 0 auto;
     overflow: hidden;
 }
@@ -66,6 +66,9 @@ body {
     border:1px solid #c8cccf;
     color:#6a6f77;
     padding-left: 4px;
+    resize: none;
+    width: 350px;
+    padding: 5px;
 }
 .wrapper input:focus, .wrapper textarea:focus{
     -webkit-box-shadow:0 0 10px rgba(95, 158, 160, .5);
@@ -92,13 +95,13 @@ body {
     height: 250px;
 }
 .main-content{
-    width: 1000px;
+    width: 1195px;
     margin: 0 auto;
     overflow: hidden;
     margin-top: 50px;
 }
 .left-content{
-    width: 565px;
+    width: 750px;
     margin-left: 10px;
     float: left;
 }
@@ -115,6 +118,7 @@ body {
 .left-content #left-inner img{
     height: 500px;
     width: 500px;
+    margin-left: 60px;
 }
 #right-inner{
     margin-top: 60px;
@@ -185,4 +189,12 @@ body {
     background: #eee;
     border-color: #ccc;
     text-decoration: none
+}
+.upload-div{
+    margin-top: 25px;
+}
+#btn-upload{
+    width: 200px;
+    margin-top: 50px;
+    margin-left: 100px;
 }

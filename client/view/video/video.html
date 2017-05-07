@@ -5,11 +5,7 @@
     <title>Play Video</title>
     <link rel="stylesheet" type="text/css" href="/client/css/index.css"/>
     <link rel="stylesheet" type="text/css" href="/client/css/video.css"/>
-    <script src="/client/js/jquery-3.1.1.min.js" type="text/javascript"></script>
-    <script src="/client/js/swfobject.js" type="text/javascript"></script>
     <link rel="stylesheet" type="text/css" href="/client/css/commentcorelib/style.css" />
-    <script type="text/javascript" src="/client/js/CommentCoreLibrary.js"></script>
-    <script type="text/javascript" src="http://cdn.bootcss.com/socket.io/1.3.2/socket.io.js"></script>
     <style type="text/css">
         #messages { list-style-type: none; margin: 0; padding: 0; }
         #messages li { padding: 5px 10px; }
@@ -17,6 +13,7 @@
     </style>
 </head>
 <body>
+<!-- 导航栏 -->
 <div id="tool-bar">
     <ul>
         <li>首页</li>
@@ -25,59 +22,43 @@
         <li class="right"><a href="/logout">退出</a></li>
         <li class="right"><%= user.username%></li>
         <li class="right"><a href="/upload">上传视频</a></li>
-
     </ul>
 </div>
-<!--
-<embed align="middle" src="http://player.youku.com/player.php/sid/XMTMxODU3MzA4NA==/v.swf" width="480" height="400" type="application/x-shockwave-flash" wmode="opaque" loop="-1" allowfullscreen="true" allowscriptaccess="true" quality="high"></embed>
-<div id="flashcontent"></div>
-<div style="width:700px;height:400px">
-    <object width="700" height="400" id="videoPlayer"
-            classid="clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B"
-            codebase="/client/file" codetype="video/mp4">
-        <param name="src" value="/client/file/AOA_0.mp4">
-        <param name="controls" value="console">
-        <embed name="videoPlayer" src="/client/file/AOA_0.mp4"
-
-               width="700"
-               height="400"
-               autostart="false"
-               paused="true"
-               controls="console"
-               type="video/mp4"
-               swliveconnect="true"
-               pluginspage="http://fuguojian.cn/blog2/"
-               mastersound>
-        </embed>
-    </object>
-    <input id="pause" type="button" value="Pause"/>
-    </div>
-    -->
+<!-- 内容主体 -->
 <div id="main-content">
+    <!-- 右侧视频播放器 -->
     <div id="content-right">
-        <div id="my-player" class="abp" style="height: 600px; background-color:#000">
+        <div id="my-player" class="abp" style="height: 500px; background-color:#000">
             <div id="my-comment-stage" class="container">
-                <object width="800" height="600" id="videoPlayer"
+                <!--[if IE]>
+                <object width="100%" height="100%" id="videoPlayer"
                         classid="clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B"
                         codebase="/client/file" codetype="video/mp4">
                     <param name="src" value="/client/file/AOA_0.mp4">
-                    <param name="controls" value="console">
-                    <embed name="videoPlayer" src="/client/file/AOA_0.mp4"
-
-                           width="800"
-                           height="600"
-                           autostart="false"
-                           paused="true"
-                           controls="console"
-                           type="video/mp4"
-                           swliveconnect="true"
-                           pluginspage="http://fuguojian.cn/blog2/"
-                           mastersound>
+                    <param name="autostart" value="0">
+                    <param name="controls" value="1">
+                    <param name="allowFullScreen" value="true">
+                    <param name="SWLIVECONNECT" value="true">
+                    <embed width="100%" height="100%" border="0" name="videoPlayer" id="testtest"
+                           showdisplay="0" autostart="0" swliveconnect="true"
+                           PLUGINSPAGE="http://www.macromedia.com/go/getflashplayer" allowScriptAccess="always"
+                           filename="/client/file/AOA_0.mp4" src="/client/file/AOA_0.mp4" mastersound controls>
                     </embed>
                 </object>
+                <![endif]-->
+                <!-- [if !IE]><!-->
+                <video id="videoPlayer2" src="/client/file/AOA_0.mp4" width="100%" height="100%" preload></video>
+                <!--<![endif]-->
             </div>
         </div>
+        <div id="controls-bar">
+            <div id="pause-play">暂停</div>
+            <div id="progress-bar"></div>
+            <div class="timeInfo">时间</div>
+            <div id="volumeBar"></div>
+        </div>
     </div>
+    <!-- 左侧弹幕区 -->
     <div id="content-left">
         <div id="msgBox">
             <ul id="messages">
@@ -108,139 +89,20 @@
     </div>
 </div>
 </body>
+<script type="text/javascript" src="/client/js/CommentCoreLibrary.js"></script>
+<script src="/client/js/jquery-1.7.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="http://cdn.bootcss.com/socket.io/1.3.2/socket.io.js"></script>
+<script type="text/javascript" src="/client/js/main/video.js"></script>
+<!--[if IE]>
+<script type="text/javascript" src="/client/js/main/videoControl_1.js"></script>
+<![endif]-->
+<!--[if !IE]><!-->
+<script type="text/javascript" src="/client/js/main/videoControl_2.js"></script>
+<!--<![endif]-->
 <script type="text/javascript">
-
-    //var so = new SWFObject("/client/file/Wildlife.swf", "mymovie", "400", "100%", "8", "#336699");
-    //so.addParam("quality", "low");
-    //so.write("flashcontent");
-   $(document).ready(function(){
-        function getFlashMovieObject(movieName)
-        {
-            if (window.document[movieName])
-            {
-                return window.document[movieName];
-            }
-            if (navigator.appName.indexOf("Microsoft Internet")==-1)
-            {
-                if (document.embeds && document.embeds[movieName])
-                    return document.embeds[movieName];
-            }   else // if (navigator.appName.indexOf("Microsoft Internet")!=-1)
-            {
-                return document.getElementById(movieName);
-            }
-        }
-        //控制
-        $("#pause").bind("click", function(){
-            alert("pause");
-            //var flashMovie = getFlashMovieObject("videoPlayer");
-            //console.log(flashMovie.CurrentState);
-        });
-
-        $.ajax({
-            url: "/videoConfig",
-            type: "GET",
-            async: true,
-            dataType: 'json',
-            success: function(data, textStatus, jqXHR){
-                //根据数据显示页面
-                var modes = data.modes;
-                var sizes = data.sizes;
-                var colors = data.colors;
-                var inits = data.inits;
-                for(var i=0; i<modes.length; i++){
-                    var item=modes[i];
-                    if(inits["mode"]==item["mode"]){
-                        $('#modes').append("<option selected='selected' value='"+item["mode"]+"'>"+item["title"]+"</option>");
-                    } else {
-                        $('#modes').append("<option value='"+item["mode"]+"'>"+item["title"]+"</option>");
-                    }
-
-                }
-                for(var i=0; i<sizes.length; i++){
-                    var item=sizes[i];
-                    if(inits["size"]==item["size"]){
-                        $('#sizes').append("<option selected='selected' value='"+item["size"]+"'>"+item["title"]+"</option>");
-                    } else {
-                        $('#sizes').append("<option value='"+item["size"]+"'>"+item["title"]+"</option>");
-                    }
-                }
-                for(var i=0; i<colors.length; i++){
-                    var item=colors[i];
-                    if(inits["color"]==item["color"]){
-                        $('#colors').append("<option selected='selected' value='"+item["color"]+"'>"+item["title"]+"</option>");
-                    } else {
-                        $('#colors').append("<option value='"+item["color"]+"'>"+item["title"]+"</option>");
-                    }
-                }
-                //init
-                $("#modes").attr({"danmu-mode": inits["mode"]});
-                $("#sizes").attr({"danmu-size": inits["size"]});
-                $("#colors").attr({"danmu-color": inits["color"]});
-
-            },
-            error: function(xhr, textStatus){
-                console.log("error");
-            }
-        });
-        $("#modes").change(function(){
-            var s = $(this).children("option:selected").val();
-            $(this).attr({"danmu-mode":s});
-        });
-        $("#sizes").change(function(){
-            var s = $(this).children("option:selected").val();
-            $(this).attr({"danmu-size": s});
-        });
-        $("#colors").change(function(){
-            var s = $(this).children("option:selected").val();
-            $(this).attr({"danmu-color": s});
-        })
-   });
-
-        //弹幕
-        window.addEventListener("load", function(){
-
-            var CM = new CommentManager(document.getElementById("my-comment-stage"));
-            CM.init();
-            CM.start();
-
-            window.CM = CM;
-
-            var socket = io();
-            socket.on('message show', function(msg){
-                var danmu = JSON.parse(msg);
-                $('#messages').append($('<li>').text( ":" + danmu["text"]));
-                CM.send(danmu);
-            });
-
-        });
-
-        var socket = io();
-        $("#btnSend").click(function(e){
-            e.preventDefault();
-           var danMu = {
-                "mode": Number($("#modes").attr("danmu-mode")),
-                "text": $("#msg").val(),
-                "stime": 0,
-                "size": Number($("#sizes").attr("danmu-size")),
-                "color": parseInt($("#colors").attr("danmu-color"), 16),
-                "dur": 10000
-            };
-            /*var danMu = {
-                "mode": 1,
-                "text": "hello world",
-                "stime": 0,
-                "size": 25,
-                "color": 0xff00ff,
-                "dur": 10000
-            };*/
-            var msg = JSON.stringify(danMu);
-            socket.emit('message send', msg);
-            $('#msg').val("");
-        })
-
-
-
-
+    $("#pause-play").bind("click", function(){
+        testtest.play();
+    });
 </script>
 </body>
 </html>

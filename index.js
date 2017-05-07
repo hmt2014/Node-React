@@ -97,6 +97,9 @@ var server = app.listen(8888, function(){
     console.log('Listening at http://%s:%s', host, port);
 });
 
+//数据库弹幕
+var models = require('./database/models');
+var Danmu = models.Danmu;
 //create socket.io
 var io = require('socket.io')(server);
 //wait for socket event
@@ -107,6 +110,14 @@ io.on('connection', function(socket){
     });
     socket.on('message send', function(msg){
         console.log('message:' + msg);
+        var danmu = new Danmu(JSON.parse(msg));
+        danmu.save(function(err, danmu){
+            if(!err){
+                console.log("Send danmu successfully！");
+            }else{
+                console.err(err);
+            }
+        });
         io.emit('message show', msg);
     })
 })
