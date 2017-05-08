@@ -38,4 +38,44 @@ body, p, ul, li, span, div{
 /*control bar*/
 #controls-bar{
     color: #000;
+    position: absolute;
+    bottom: 0;
+    overflow: hidden;
+    background-color: pink;
+    z-index: 9999;
+    height: 36px;
+}
+#pause-play{
+    width: 36px;
+    height: 35px;
+    background-image: url("/client/img/vdoBg/videoBtns.png");
+}
+#pause-play.pause{
+    background-position: 148px -87px;
+}
+#pause-play.pause:hover{
+    background-position: 196px -87px;
+}
+#pause-play.play{
+    background-position: 148px -167px;
+}
+#pause-play.play:hover{
+    background-position: 196px -167px;
+}
+#controls-bar .ctrs{
+    float: left;
+}
+#progress-bar{
+    width: 550px;
+}
+#progress-bar .progress-bg{
+    background-color: white;
+    width: 500px;
+    height: 5px;
+    margin: 15px 0 0 10px;
+}
+#progress-bar .progress-play{
+    width: 100px;
+    height: 100%;
+    background-color: #86A8A8;
 }

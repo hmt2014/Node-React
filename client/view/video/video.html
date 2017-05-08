@@ -28,7 +28,7 @@
 <div id="main-content">
     <!-- 右侧视频播放器 -->
     <div id="content-right">
-        <div id="my-player" class="abp" style="height: 500px; background-color:#000">
+        <div id="my-player" class="abp" style="height: 497px; width: 880px; background-color:#000">
             <div id="my-comment-stage" class="container">
                 <!--[if IE]>
                 <object width="100%" height="100%" id="videoPlayer"
@@ -36,13 +36,14 @@
                         codebase="/client/file" codetype="video/mp4">
                     <param name="src" value="/client/file/AOA_0.mp4">
                     <param name="autostart" value="0">
-                    <param name="controls" value="1">
+                    <param name="controls" value="0">
                     <param name="allowFullScreen" value="true">
                     <param name="SWLIVECONNECT" value="true">
-                    <embed width="100%" height="100%" border="0" name="videoPlayer" id="testtest"
-                           showdisplay="0" autostart="0" swliveconnect="true"
+                    <param name="wmode" value="Opaque">
+                    <embed width="100%" height="100%" border="0" name="videoPlayer" id="testtest" windowlessVideo="1"
+                           showdisplay="0" autostart="0" swliveconnect="true" showcontrols="0"
                            PLUGINSPAGE="http://www.macromedia.com/go/getflashplayer" allowScriptAccess="always"
-                           filename="/client/file/AOA_0.mp4" src="/client/file/AOA_0.mp4" mastersound controls>
+                           filename="/client/file/AOA_0.mp4" src="/client/file/AOA_0.mp4" mastersound>
                     </embed>
                 </object>
                 <![endif]-->
@@ -50,12 +51,17 @@
                 <video id="videoPlayer2" src="/client/file/AOA_0.mp4" width="100%" height="100%" preload></video>
                 <!--<![endif]-->
             </div>
-        </div>
-        <div id="controls-bar">
-            <div id="pause-play">暂停</div>
-            <div id="progress-bar"></div>
-            <div class="timeInfo">时间</div>
-            <div id="volumeBar"></div>
+            <div id="controls-bar">
+                <div class="ctrs pause" id="pause-play"></div>
+                <div class="ctrs" id="progress-bar">
+                    <div class="progress-bg">
+                        <div class="progress-play"></div>
+                    </div>
+                </div>
+                <div class="ctrs" class="timeInfo"></div>
+                <div class="ctrs" id="volumeBar"></div>
+            </div>
+
         </div>
     </div>
     <!-- 左侧弹幕区 -->
@@ -94,15 +100,11 @@
 <script type="text/javascript" src="http://cdn.bootcss.com/socket.io/1.3.2/socket.io.js"></script>
 <script type="text/javascript" src="/client/js/main/video.js"></script>
 <!--[if IE]>
+<script type="text/javascript" src="/client/js/jquery.bgiframe.min.js"></script>
 <script type="text/javascript" src="/client/js/main/videoControl_1.js"></script>
 <![endif]-->
 <!--[if !IE]><!-->
 <script type="text/javascript" src="/client/js/main/videoControl_2.js"></script>
 <!--<![endif]-->
-<script type="text/javascript">
-    $("#pause-play").bind("click", function(){
-        testtest.play();
-    });
-</script>
 </body>
 </html>
